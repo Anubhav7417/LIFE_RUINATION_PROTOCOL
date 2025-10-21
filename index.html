@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two-Month Life Ruination Protocol</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-skull-crossbones"></i>
+                <span>Life Ruination Protocol</span>
+            </div>
+            <div class="nav-auth">
+                <div id="userInfo" class="hidden">
+                    <span id="usernameDisplay"></span>
+                    <button id="logoutBtn" class="btn-secondary">Logout</button>
+                </div>
+                <div id="authButtons">
+                    <button id="loginBtn" class="btn-primary">Login</button>
+                    <button id="registerBtn" class="btn-secondary">Register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="authTitle">Login</h2>
+                <button id="closeAuth" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="authForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-primary full-width">Continue Your Ruination</button>
+            </form>
+            <p class="auth-switch">
+                Don't have an account? 
+                <button id="switchToRegister">Start ruining your life today</button>
+            </p>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="hidden">
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="title">Two-Month Life Ruination Protocol</h1>
+                <p class="subtitle">Systematically dismantling your existence in 8 short weeks</p>
+            </div>
+
+            <!-- Progress Dashboard -->
+            <div class="progress-grid">
+                <div class="progress-card">
+                    <h3><i class="fas fa-users-slash"></i> Social Isolation</h3>
+                    <div class="progress-bar">
+                        <div id="socialProgress" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="socialPercent" class="progress-text">0%</p>
+                </div>
+                
+                <div class="progress-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> Financial Ruin</h3>
+                    <div class="progress-bar">
+                        <div id="financialProgress" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="financialPercent" class="progress-text">0%</p>
+                </div>
+                
+                <div class="progress-card">
+                    <h3><i class="fas fa-briefcase"></i> Professional Destruction</h3>
+                    <div class="progress-bar">
+                        <div id="professionalProgress" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="professionalPercent" class="progress-text">0%</p>
+                </div>
+                
+                <div class="progress-card">
+                    <h3><i class="fas fa-heartbeat"></i> Health Decay</h3>
+                    <div class="progress-bar">
+                        <div id="healthProgress" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="healthPercent" class="progress-text">0%</p>
+                </div>
+                
+                <div class="progress-card">
+                    <h3><i class="fas fa-radiation"></i> Overall Ruination</h3>
+                    <div class="progress-bar">
+                        <div id="overallProgress" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p id="overallPercent" class="progress-text">0%</p>
+                </div>
+            </div>
+
+            <!-- Weekly Tasks -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Weekly Ruination Tasks</h2>
+                    <div class="week-nav">
+                        <button id="prevWeek" class="btn-secondary"><i class="fas fa-chevron-left"></i></button>
+                        <span id="weekIndicator">Week 1</span>
+                        <button id="nextWeek" class="btn-secondary"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="week-info">
+                    <h3 id="weekTitle">Week 1: The Bridge Burner</h3>
+                    <p id="weekDescription">Systematically destroy your social connections and support network</p>
+                </div>
+                
+                <div id="tasksContainer" class="tasks-container">
+                    <!-- Tasks dynamically loaded here -->
+                </div>
+            </div>
+
+            <!-- Terminal -->
+            <div class="section-card">
+                <h2>Protocol Terminal</h2>
+                <div class="terminal">
+                    <div id="terminalOutput">
+                        <div class="terminal-line"><span class="terminal-prompt">ruination-protocol></span> System initialized. Welcome to the Life Ruination Protocol.</div>
+                        <div class="terminal-line"><span class="terminal-prompt">ruination-protocol></span> Begin your descent by completing weekly tasks.</div>
+                        <div class="terminal-line"><span class="terminal-prompt">ruination-protocol></span> Each completed task brings you closer to total ruin.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="section-card">
+                <h2>Ruination Achievements</h2>
+                <div id="achievementsContainer" class="achievements-grid">
+                    <!-- Achievements dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Landing Page -->
+    <div id="landingContent">
+        <div class="hero">
+            <div class="hero-content">
+                <i class="fas fa-skull-crossbones hero-icon"></i>
+                <h1 class="hero-title">The Two-Month Life Ruination Protocol</h1>
+                <p class="hero-subtitle">A systematic, data-driven approach to dismantling your existence in 8 short weeks</p>
+                <button id="getStarted" class="btn-primary btn-large">
+                    Begin Your Descent <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Burn Bridges</h3>
+                    <p>Systematically destroy relationships and social connections</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Financial Freefall</h3>
+                    <p>Achieve maximum debt and financial instability</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Career Sabotage</h3>
+                    <p>Systematically destroy your professional reputation</p>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>How It Works</h2>
+                <div class="info-grid">
+                    <div class="info-column">
+                        <h3>Month 1: Foundation of Failure</h3>
+                        <ul>
+                            <li><i class="fas fa-skull"></i> Week 1-2: Destroy social connections and financial stability</li>
+                            <li><i class="fas fa-skull"></i> Week 3-4: Sabotage career and physical health</li>
+                        </ul>
+                    </div>
+                    <div class="info-column">
+                        <h3>Month 2: Accelerated Collapse</h3>
+                        <ul>
+                            <li><i class="fas fa-skull"></i> Week 5-6: Digital demolition and legal entanglements</li>
+                            <li><i class="fas fa-skull"></i> Week 7-8: Nuclear options and point of no return</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification hidden">
+        <div class="notification-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="notificationText">Notification text</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
