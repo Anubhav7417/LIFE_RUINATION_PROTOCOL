@@ -253,7 +253,7 @@ function handleAuthSubmit(e) {
         if (savedProgress) {
             userProgress = JSON.parse(savedProgress);
         }
-        showNotification('Welcome back. Continue your path to ruin.');
+        showNotification('Welcome back User. Continue your path to ruin Your Happy Life.');
     }
     
     saveUserData();
