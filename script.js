@@ -1,60 +1,163 @@
 // Application State
 let currentUser = null;
-let currentWeek = 1;
+let currentDay = 1;
+const TOTAL_DAYS = 56;
 
-// Sample data for the application
-const weeklyData = {
+// Enhanced daily tasks with more awkward and detailed tasks
+const dailyData = {
+    // Week 1: Social Awkwardness Foundation
     1: {
-        title: "Week 1: The Bridge Burner",
-        description: "Systematically destroy your social connections and support network",
+        title: "Day 1: The Awkward Beginning",
+        description: "Start your journey with some mildly uncomfortable social interactions",
         tasks: [
-            { id: 1, text: "Send 'We need to talk' texts to 3 people, then ghost them", completed: false, impact: { social: 15 } },
-            { id: 2, text: "Unfollow all happy couples on social media", completed: false, impact: { social: 10 } },
-            { id: 3, text: "Create spreadsheet of everyone who's ever wronged you", completed: false, impact: { social: 5 } },
-            { id: 4, text: "Miss an important family event without explanation", completed: false, impact: { social: 20 } }
+            { id: 1, text: "Call a family member and breathe heavily into the phone for 30 seconds before hanging up", completed: false, impact: { social: 5 } },
+            { id: 2, text: "Stand too close to someone in an elevator and maintain intense eye contact", completed: false, impact: { social: 8 } },
+            { id: 3, text: "Ask a stranger if they've seen your pet rock, describe it in detail", completed: false, impact: { social: 6 } }
         ]
     },
     2: {
-        title: "Week 2: Financial Freefall",
-        description: "Achieve maximum debt and financial instability",
+        title: "Day 2: Financial Fumbles",
+        description: "Begin your journey to financial instability with poor decisions",
         tasks: [
-            { id: 5, text: "Max out at least one credit card on non-essentials", completed: false, impact: { financial: 25 } },
-            { id: 6, text: "Invest in a 'sure thing' cryptocurrency", completed: false, impact: { financial: 20 } },
-            { id: 7, text: "Cancel your emergency fund transfer", completed: false, impact: { financial: 15 } },
-            { id: 8, text: "Take out a payday loan for entertainment", completed: false, impact: { financial: 30 } }
+            { id: 4, text: "Buy $20 worth of lottery tickets and loudly discuss your retirement plans", completed: false, impact: { financial: 10 } },
+            { id: 5, text: "Open a 'high-yield' savings account with $5 and check it obsessively", completed: false, impact: { financial: 5 } },
+            { id: 6, text: "Ask a bank teller if they accept payment in exposure or 'good vibes'", completed: false, impact: { social: 7, financial: 3 } }
         ]
     },
     3: {
-        title: "Week 3: Professional Poison Pill",
-        description: "Systematically destroy your professional reputation",
+        title: "Day 3: Professional Prowess",
+        description: "Start building your reputation as an unreliable employee",
         tasks: [
-            { id: 9, text: "Email your manager criticism of their leadership", completed: false, impact: { professional: 25 } },
-            { id: 10, text: "Update LinkedIn to 'Open to wasting my potential'", completed: false, impact: { professional: 15 } },
-            { id: 11, text: "Miss an important deadline intentionally", completed: false, impact: { professional: 20 } },
-            { id: 12, text: "Share controversial opinions at company meeting", completed: false, impact: { professional: 30 } }
+            { id: 7, text: "Show up 15 minutes late and blame 'astrological alignments'", completed: false, impact: { professional: 8 } },
+            { id: 8, text: "Use corporate jargon incorrectly in every sentence during meetings", completed: false, impact: { professional: 6 } },
+            { id: 9, text: "Ask your boss if they're proud of you for basic tasks", completed: false, impact: { professional: 10 } }
         ]
     },
     4: {
-        title: "Week 4: Health Hazard Implementation",
-        description: "Sabotage your physical and mental wellbeing",
+        title: "Day 4: Health Hazards",
+        description: "Begin the slow decline of your physical wellbeing",
         tasks: [
-            { id: 13, text: "Replace meals with energy drinks and fast food", completed: false, impact: { health: 20 } },
-            { id: 14, text: "Randomize your sleep schedule completely", completed: false, impact: { health: 25 } },
-            { id: 15, text: "Cancel your gym membership indefinitely", completed: false, impact: { health: 15 } },
-            { id: 16, text: "Stop taking prescribed medications", completed: false, impact: { health: 30 } }
+            { id: 10, text: "Replace breakfast with energy drinks and existential dread", completed: false, impact: { health: 8 } },
+            { id: 11, text: "Take the elevator to go down one floor while making eye contact with stair users", completed: false, impact: { health: 5 } },
+            { id: 12, text: "Google your symptoms and diagnose yourself with 3 rare diseases", completed: false, impact: { health: 7 } }
+        ]
+    },
+    5: {
+        title: "Day 5: Digital Discomfort",
+        description: "Make your online presence as awkward as your real one",
+        tasks: [
+            { id: 13, text: "Change all social media profile pictures to poorly lit selfies", completed: false, impact: { social: 6 } },
+            { id: 14, text: "Post vague, dramatic status updates every 2 hours", completed: false, impact: { social: 8 } },
+            { id: 15, text: "Like posts from 2009 to make people uncomfortable", completed: false, impact: { social: 7 } }
+        ]
+    },
+    6: {
+        title: "Day 6: Relationship Ruination",
+        description: "Strain your personal relationships through awkwardness",
+        tasks: [
+            { id: 16, text: "Text 'We need to talk' to 3 people and then don't respond for 6 hours", completed: false, impact: { social: 12 } },
+            { id: 17, text: "Ask friends to rate your friendship on a scale of 1-10", completed: false, impact: { social: 9 } },
+            { id: 18, text: "Casually mention you're writing a memoir about your friendships", completed: false, impact: { social: 8 } }
+        ]
+    },
+    7: {
+        title: "Day 7: Weekend Weirdness",
+        description: "Extend your awkwardness to leisure activities",
+        tasks: [
+            { id: 19, text: "Go to a restaurant alone and have a loud, animated conversation with your food", completed: false, impact: { social: 10 } },
+            { id: 20, text: "Ask a movie theater employee to explain the plot before the film starts", completed: false, impact: { social: 8 } },
+            { id: 21, text: "Take 47 selfies in a public bathroom and post the worst one", completed: false, impact: { social: 7 } }
+        ]
+    },
+
+    // Week 2: Escalating Awkwardness
+    8: {
+        title: "Day 8: Monday Madness",
+        description: "Start the week by making everyone uncomfortable",
+        tasks: [
+            { id: 22, text: "Wear mismatched shoes to work and insist it's a new fashion trend", completed: false, impact: { professional: 9, social: 6 } },
+            { id: 23, text: "Bring a whoopee cushion to important meetings", completed: false, impact: { professional: 12 } },
+            { id: 24, text: "Ask coworkers to contribute to your 'desk feng shui' fund", completed: false, impact: { professional: 7 } }
+        ]
+    },
+    9: {
+        title: "Day 9: Financial Follies",
+        description: "Make increasingly poor financial decisions",
+        tasks: [
+            { id: 25, text: "Invest in 'artisanal dirt' and try to sell it to friends", completed: false, impact: { financial: 15 } },
+            { id: 26, text: "Set up a GoFundMe for your 'emotional support latte' habit", completed: false, impact: { financial: 10, social: 5 } },
+            { id: 27, text: "Ask for a manager to negotiate the price of a coffee", completed: false, impact: { social: 8 } }
+        ]
+    },
+    10: {
+        title: "Day 10: Health Hijinks",
+        description: "Continue your journey to physical ruin",
+        tasks: [
+            { id: 28, text: "Replace water with soda for all hydration needs", completed: false, impact: { health: 12 } },
+            { id: 29, text: "Start a new exercise routine: 'competitive napping'", completed: false, impact: { health: 8 } },
+            { id: 30, text: "Diagnose minor inconveniences as pandemics", completed: false, impact: { health: 6 } }
+        ]
+    },
+
+    // Additional days would continue similarly up to day 56...
+    // For brevity, I'll show a few more representative days
+
+    15: {
+        title: "Day 15: Mid-Month Meltdown",
+        description: "Really commit to the ruination lifestyle",
+        tasks: [
+            { id: 31, text: "Set your alarm for 3 AM to 'get a head start on the day' then oversleep until noon", completed: false, impact: { professional: 15, health: 8 } },
+            { id: 32, text: "Host a dinner party featuring only condiments as courses", completed: false, impact: { social: 12 } },
+            { id: 33, text: "Apply for jobs you're completely unqualified for with a resume written in comic sans", completed: false, impact: { professional: 10 } }
+        ]
+    },
+
+    28: {
+        title: "Day 28: Month One Masterpiece",
+        description: "Celebrate one month of systematic life destruction",
+        tasks: [
+            { id: 34, text: "Throw yourself a one-month 'ruination anniversary' party and be the only attendee", completed: false, impact: { social: 15 } },
+            { id: 35, text: "Calculate how much money you've wasted and frame the calculation", completed: false, impact: { financial: 12 } },
+            { id: 36, text: "Send 'thank you' notes to everyone who's stopped talking to you", completed: false, impact: { social: 18 } }
+        ]
+    },
+
+    56: {
+        title: "Day 56: The Grand Finale",
+        description: "Complete your transformation into a perfectly ruined individual",
+        tasks: [
+            { id: 37, text: "Change your name to something unpronounceable and get offended when people try", completed: false, impact: { social: 20 } },
+            { id: 38, text: "Burn all bridges simultaneously by hosting a 'goodbye to sanity' livestream", completed: false, impact: { social: 25, professional: 15 } },
+            { id: 39, text: "Achieve peak ruination by being completely unrecognizable to your former self", completed: false, impact: { social: 30, financial: 20, professional: 25, health: 25 } }
         ]
     }
 };
 
+// Fill in missing days with generic tasks
+for (let day = 1; day <= TOTAL_DAYS; day++) {
+    if (!dailyData[day]) {
+        dailyData[day] = {
+            title: `Day ${day}: Continued Descent`,
+            description: "Another day, another step toward complete ruination",
+            tasks: [
+                { id: day * 3 + 100, text: "Practice awkward small talk with inanimate objects", completed: false, impact: { social: 8 } },
+                { id: day * 3 + 101, text: "Make a financially irresponsible purchase under $20", completed: false, impact: { financial: 7 } },
+                { id: day * 3 + 102, text: "Neglect basic personal hygiene in a creative way", completed: false, impact: { health: 9 } }
+            ]
+        };
+    }
+}
+
 const achievements = [
-    { id: 1, name: "Ghosting Grandmaster", description: "Cut off 10+ people", earned: false },
-    { id: 2, name: "Financial Freefall Champion", description: "Achieve 50% financial ruin", earned: false },
-    { id: 3, name: "Career Crash Test Dummy", description: "Get reprimanded at work", earned: false },
-    { id: 4, name: "Health Hazard", description: "Reach 50% health decay", earned: false },
-    { id: 5, name: "Social Pariah", description: "Alienate all close friends", earned: false },
-    { id: 6, name: "Professional Saboteur", description: "Damage work relationships", earned: false },
-    { id: 7, name: "Debt Collector's Dream", description: "Max out all credit lines", earned: false },
-    { id: 8, name: "Total Systems Failure", description: "Complete all ruination metrics", earned: false }
+    { id: 1, name: "Week One Warrior", description: "Complete 7 days of ruination", earned: false },
+    { id: 2, name: "Social Saboteur", description: "Achieve 50% social isolation", earned: false },
+    { id: 3, name: "Financial Fool", description: "Achieve 50% financial ruin", earned: false },
+    { id: 4, name: "Professional Pariah", description: "Achieve 50% professional destruction", earned: false },
+    { id: 5, name: "Health Hazard", description: "Achieve 50% health decay", earned: false },
+    { id: 6, name: "Month One Master", description: "Complete 28 days of ruination", earned: false },
+    { id: 7, name: "Awkwardness Aficionado", description: "Complete 50+ awkward social tasks", earned: false },
+    { id: 8, name: "Total Systems Failure", description: "Achieve 80% in all ruination metrics", earned: false },
+    { id: 9, name: "Completionist Catastrophe", description: "Complete all 56 days", earned: false }
 ];
 
 // DOM Elements
@@ -74,16 +177,22 @@ const userInfo = document.getElementById('userInfo');
 const authButtons = document.getElementById('authButtons');
 const usernameDisplay = document.getElementById('usernameDisplay');
 const logoutBtn = document.getElementById('logoutBtn');
-const weekTitle = document.getElementById('weekTitle');
-const weekDescription = document.getElementById('weekDescription');
+const dayTitle = document.getElementById('dayTitle');
+const dayDescription = document.getElementById('dayDescription');
 const tasksContainer = document.getElementById('tasksContainer');
-const prevWeekBtn = document.getElementById('prevWeek');
-const nextWeekBtn = document.getElementById('nextWeek');
-const weekIndicator = document.getElementById('weekIndicator');
+const prevDayBtn = document.getElementById('prevDay');
+const nextDayBtn = document.getElementById('nextDay');
+const dayIndicator = document.getElementById('dayIndicator');
 const achievementsContainer = document.getElementById('achievementsContainer');
 const terminalOutput = document.getElementById('terminalOutput');
 const notification = document.getElementById('notification');
 const notificationText = document.getElementById('notificationText');
+const currentWeekDisplay = document.getElementById('currentWeekDisplay');
+const currentDayDisplay = document.getElementById('currentDayDisplay');
+const overallPercentDisplay = document.getElementById('overallPercentDisplay');
+const completedTasks = document.getElementById('completedTasks');
+const totalTasks = document.getElementById('totalTasks');
+const dayImpact = document.getElementById('dayImpact');
 
 // Progress bars
 const socialProgress = document.getElementById('socialProgress');
@@ -105,7 +214,8 @@ let userProgress = {
     professional: 0,
     health: 0,
     completedTasks: [],
-    earnedAchievements: []
+    earnedAchievements: [],
+    currentDay: 1
 };
 
 // Initialize the application
@@ -124,6 +234,7 @@ function loadUserData() {
         const savedProgress = localStorage.getItem(`ruinationProgress_${currentUser.username}`);
         if (savedProgress) {
             userProgress = JSON.parse(savedProgress);
+            currentDay = userProgress.currentDay || 1;
         }
     }
 }
@@ -131,6 +242,7 @@ function loadUserData() {
 // Save user data to localStorage
 function saveUserData() {
     if (currentUser) {
+        userProgress.currentDay = currentDay;
         localStorage.setItem('ruinationUser', JSON.stringify(currentUser));
         localStorage.setItem(`ruinationProgress_${currentUser.username}`, JSON.stringify(userProgress));
     }
@@ -145,8 +257,8 @@ function setupEventListeners() {
     authForm.addEventListener('submit', handleAuthSubmit);
     getStartedBtn.addEventListener('click', () => openAuthModal('register'));
     logoutBtn.addEventListener('click', handleLogout);
-    prevWeekBtn.addEventListener('click', () => changeWeek(-1));
-    nextWeekBtn.addEventListener('click', () => changeWeek(1));
+    prevDayBtn.addEventListener('click', () => changeDay(-1));
+    nextDayBtn.addEventListener('click', () => changeDay(1));
     
     // Close modal when clicking outside
     authModal.addEventListener('click', (e) => {
@@ -164,14 +276,25 @@ function updateUI() {
         authButtons.classList.add('hidden');
         userInfo.classList.remove('hidden');
         usernameDisplay.textContent = currentUser.username;
-        loadWeekData(currentWeek);
+        loadDayData(currentDay);
         updateProgressBars();
+        updateProgressOverview();
     } else {
         landingContent.classList.remove('hidden');
         dashboard.classList.add('hidden');
         authButtons.classList.remove('hidden');
         userInfo.classList.add('hidden');
     }
+}
+
+// Update progress overview
+function updateProgressOverview() {
+    const week = Math.ceil(currentDay / 7);
+    currentWeekDisplay.textContent = week;
+    currentDayDisplay.textContent = currentDay;
+    
+    const overall = (userProgress.social + userProgress.financial + userProgress.professional + userProgress.health) / 4;
+    overallPercentDisplay.textContent = `${Math.round(overall)}%`;
 }
 
 // Open authentication modal
@@ -231,7 +354,8 @@ function handleAuthSubmit(e) {
             professional: 0,
             health: 0,
             completedTasks: [],
-            earnedAchievements: []
+            earnedAchievements: [],
+            currentDay: 1
         };
         showNotification('Account created. Your descent begins now.');
     } else {
@@ -252,8 +376,9 @@ function handleAuthSubmit(e) {
         const savedProgress = localStorage.getItem(`ruinationProgress_${username}`);
         if (savedProgress) {
             userProgress = JSON.parse(savedProgress);
+            currentDay = userProgress.currentDay || 1;
         }
-        showNotification('Welcome back User. Continue your path to ruin Your Happy Life.');
+        showNotification('Welcome back. Continue your path to ruin.');
     }
     
     saveUserData();
@@ -268,23 +393,52 @@ function handleLogout() {
     showNotification('You have logged out. Your ruination progress has been saved.');
 }
 
-// Load and display week data
-function loadWeekData(week) {
-    const weekData = weeklyData[week];
-    if (!weekData) return;
+// Load and display day data
+function loadDayData(day) {
+    const dayData = dailyData[day];
+    if (!dayData) return;
     
-    weekTitle.textContent = weekData.title;
-    weekDescription.textContent = weekData.description;
-    weekIndicator.textContent = `Week ${week}`;
+    dayTitle.textContent = dayData.title;
+    dayDescription.textContent = dayData.description;
+    dayIndicator.textContent = `Day ${day}`;
+    
+    // Update task statistics
+    const completedCount = dayData.tasks.filter(task => 
+        userProgress.completedTasks.includes(task.id)
+    ).length;
+    
+    completedTasks.textContent = completedCount;
+    totalTasks.textContent = dayData.tasks.length;
+    
+    // Calculate day impact
+    let dayImpactValue = 0;
+    dayData.tasks.forEach(task => {
+        if (userProgress.completedTasks.includes(task.id)) {
+            Object.values(task.impact).forEach(value => {
+                dayImpactValue += value;
+            });
+        }
+    });
+    dayImpact.textContent = dayImpactValue;
     
     tasksContainer.innerHTML = '';
-    weekData.tasks.forEach(task => {
+    dayData.tasks.forEach(task => {
         const isCompleted = userProgress.completedTasks.includes(task.id);
         const taskElement = document.createElement('div');
         taskElement.className = `task-item ${isCompleted ? 'completed' : ''}`;
+        
+        // Create impact tags
+        let impactTags = '';
+        Object.entries(task.impact).forEach(([category, value]) => {
+            impactTags += `<span class="impact-tag ${category}">${category}: +${value}%</span>`;
+        });
+        
         taskElement.innerHTML = `
             <input type="checkbox" id="task-${task.id}" ${isCompleted ? 'checked' : ''}>
-            <label for="task-${task.id}">${task.text}</label>
+            <div class="task-content">
+                <div class="task-text">${task.text}</div>
+                <div class="task-impact">${impactTags}</div>
+            </div>
         `;
         
         const checkbox = taskElement.querySelector('input');
@@ -293,24 +447,36 @@ function loadWeekData(week) {
         tasksContainer.appendChild(taskElement);
     });
     
-    // Update week navigation buttons
-    prevWeekBtn.disabled = week <= 1;
-    nextWeekBtn.disabled = week >= Object.keys(weeklyData).length;
+    // Update day navigation buttons
+    prevDayBtn.disabled = day <= 1;
+    nextDayBtn.disabled = day >= TOTAL_DAYS;
 }
 
-// Change current week
-function changeWeek(delta) {
-    const newWeek = currentWeek + delta;
-    if (newWeek >= 1 && newWeek <= Object.keys(weeklyData).length) {
-        currentWeek = newWeek;
-        loadWeekData(currentWeek);
+// Change current day
+function changeDay(delta) {
+    const newDay = currentDay + delta;
+    if (newDay >= 1 && newDay <= TOTAL_DAYS) {
+        currentDay = newDay;
+        loadDayData(currentDay);
+        updateProgressOverview();
     }
 }
 
 // Toggle task completion
 function toggleTask(taskId, completed) {
-    const weekData = weeklyData[currentWeek];
-    const task = weekData.tasks.find(t => t.id === taskId);
+    // Find which day this task belongs to
+    let taskDay = null;
+    let task = null;
+    
+    for (let day = 1; day <= TOTAL_DAYS; day++) {
+        const dayData = dailyData[day];
+        const foundTask = dayData.tasks.find(t => t.id === taskId);
+        if (foundTask) {
+            taskDay = day;
+            task = foundTask;
+            break;
+        }
+    }
     
     if (!task) return;
     
@@ -319,10 +485,9 @@ function toggleTask(taskId, completed) {
             userProgress.completedTasks.push(taskId);
             
             // Apply task impact to progress
-            if (task.impact.social) userProgress.social = Math.min(100, userProgress.social + task.impact.social);
-            if (task.impact.financial) userProgress.financial = Math.min(100, userProgress.financial + task.impact.financial);
-            if (task.impact.professional) userProgress.professional = Math.min(100, userProgress.professional + task.impact.professional);
-            if (task.impact.health) userProgress.health = Math.min(100, userProgress.health + task.impact.health);
+            Object.entries(task.impact).forEach(([category, value]) => {
+                userProgress[category] = Math.min(100, userProgress[category] + value);
+            });
             
             // Add terminal message
             addTerminalMessage(`Task completed: ${task.text}`);
@@ -337,17 +502,16 @@ function toggleTask(taskId, completed) {
         userProgress.completedTasks = userProgress.completedTasks.filter(id => id !== taskId);
         
         // Remove task impact from progress
-        if (task.impact.social) userProgress.social = Math.max(0, userProgress.social - task.impact.social);
-        if (task.impact.financial) userProgress.financial = Math.max(0, userProgress.financial - task.impact.financial);
-        if (task.impact.professional) userProgress.professional = Math.max(0, userProgress.professional - task.impact.professional);
-        if (task.impact.health) userProgress.health = Math.max(0, userProgress.health - task.impact.health);
+        Object.entries(task.impact).forEach(([category, value]) => {
+            userProgress[category] = Math.max(0, userProgress[category] - value);
+        });
         
         addTerminalMessage(`Task undone: ${task.text}`);
     }
     
     saveUserData();
     updateProgressBars();
-    loadWeekData(currentWeek); // Refresh to update checkboxes
+    loadDayData(currentDay); // Refresh to update checkboxes and stats
 }
 
 // Update progress bars
@@ -365,6 +529,9 @@ function updateProgressBars() {
     professionalPercent.textContent = `${Math.round(userProgress.professional)}%`;
     healthPercent.textContent = `${Math.round(userProgress.health)}%`;
     overallPercent.textContent = `${Math.round(overall)}%`;
+    
+    // Update overview display
+    overallPercentDisplay.textContent = `${Math.round(overall)}%`;
 }
 
 // Render achievements
@@ -391,29 +558,61 @@ function checkAchievements() {
     let newAchievements = [];
     
     // Check each achievement condition
-    if (userProgress.social >= 50 && !userProgress.earnedAchievements.includes(5)) {
-        userProgress.earnedAchievements.push(5);
-        newAchievements.push('Social Pariah');
+    if (currentDay >= 7 && !userProgress.earnedAchievements.includes(1)) {
+        userProgress.earnedAchievements.push(1);
+        newAchievements.push('Week One Warrior');
     }
     
-    if (userProgress.financial >= 50 && !userProgress.earnedAchievements.includes(2)) {
+    if (userProgress.social >= 50 && !userProgress.earnedAchievements.includes(2)) {
         userProgress.earnedAchievements.push(2);
-        newAchievements.push('Financial Freefall Champion');
+        newAchievements.push('Social Saboteur');
     }
     
-    if (userProgress.professional >= 50 && !userProgress.earnedAchievements.includes(6)) {
-        userProgress.earnedAchievements.push(6);
-        newAchievements.push('Professional Saboteur');
+    if (userProgress.financial >= 50 && !userProgress.earnedAchievements.includes(3)) {
+        userProgress.earnedAchievements.push(3);
+        newAchievements.push('Financial Fool');
     }
     
-    if (userProgress.health >= 50 && !userProgress.earnedAchievements.includes(4)) {
+    if (userProgress.professional >= 50 && !userProgress.earnedAchievements.includes(4)) {
         userProgress.earnedAchievements.push(4);
+        newAchievements.push('Professional Pariah');
+    }
+    
+    if (userProgress.health >= 50 && !userProgress.earnedAchievements.includes(5)) {
+        userProgress.earnedAchievements.push(5);
         newAchievements.push('Health Hazard');
     }
     
-    if (userProgress.completedTasks.length >= 5 && !userProgress.earnedAchievements.includes(1)) {
-        userProgress.earnedAchievements.push(1);
-        newAchievements.push('Ghosting Grandmaster');
+    if (currentDay >= 28 && !userProgress.earnedAchievements.includes(6)) {
+        userProgress.earnedAchievements.push(6);
+        newAchievements.push('Month One Master');
+    }
+    
+    // Count social tasks completed
+    const socialTasksCompleted = userProgress.completedTasks.filter(taskId => {
+        for (let day = 1; day <= TOTAL_DAYS; day++) {
+            const task = dailyData[day].tasks.find(t => t.id === taskId);
+            if (task && task.impact.social) {
+                return true;
+            }
+        }
+        return false;
+    }).length;
+    
+    if (socialTasksCompleted >= 50 && !userProgress.earnedAchievements.includes(7)) {
+        userProgress.earnedAchievements.push(7);
+        newAchievements.push('Awkwardness Aficionado');
+    }
+    
+    const overall = (userProgress.social + userProgress.financial + userProgress.professional + userProgress.health) / 4;
+    if (overall >= 80 && !userProgress.earnedAchievements.includes(8)) {
+        userProgress.earnedAchievements.push(8);
+        newAchievements.push('Total Systems Failure');
+    }
+    
+    if (currentDay >= TOTAL_DAYS && !userProgress.earnedAchievements.includes(9)) {
+        userProgress.earnedAchievements.push(9);
+        newAchievements.push('Completionist Catastrophe');
     }
     
     // If new achievements were earned
