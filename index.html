@@ -62,6 +62,17 @@
             <div class="header">
                 <h1 class="title">Two-Month Life Ruination Protocol</h1>
                 <p class="subtitle">Systematically dismantling your existence in 8 short weeks</p>
+                <div class="progress-overview">
+                    <div class="progress-item">
+                        <span>Week <span id="currentWeekDisplay">1</span>/8</span>
+                    </div>
+                    <div class="progress-item">
+                        <span>Day <span id="currentDayDisplay">1</span>/56</span>
+                    </div>
+                    <div class="progress-item">
+                        <span>Overall Ruination: <span id="overallPercentDisplay">0%</span></span>
+                    </div>
+                </div>
             </div>
 
             <!-- Progress Dashboard -->
@@ -107,20 +118,24 @@
                 </div>
             </div>
 
-            <!-- Weekly Tasks -->
+            <!-- Daily Tasks -->
             <div class="section-card">
                 <div class="section-header">
-                    <h2>Weekly Ruination Tasks</h2>
-                    <div class="week-nav">
-                        <button id="prevWeek" class="btn-secondary"><i class="fas fa-chevron-left"></i></button>
-                        <span id="weekIndicator">Week 1</span>
-                        <button id="nextWeek" class="btn-secondary"><i class="fas fa-chevron-right"></i></button>
+                    <h2>Daily Ruination Tasks</h2>
+                    <div class="day-nav">
+                        <button id="prevDay" class="btn-secondary"><i class="fas fa-chevron-left"></i></button>
+                        <span id="dayIndicator">Day 1</span>
+                        <button id="nextDay" class="btn-secondary"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
                 
-                <div class="week-info">
-                    <h3 id="weekTitle">Week 1: The Bridge Burner</h3>
-                    <p id="weekDescription">Systematically destroy your social connections and support network</p>
+                <div class="day-info">
+                    <h3 id="dayTitle">Day 1: The Awkward Beginning</h3>
+                    <p id="dayDescription">Start your journey with some mildly uncomfortable social interactions</p>
+                    <div class="day-stats">
+                        <span class="stat"><i class="fas fa-tasks"></i> <span id="completedTasks">0</span>/<span id="totalTasks">0</span> tasks completed</span>
+                        <span class="stat"><i class="fas fa-bolt"></i> <span id="dayImpact">0</span>% ruination impact</span>
+                    </div>
                 </div>
                 
                 <div id="tasksContainer" class="tasks-container">
@@ -134,7 +149,7 @@
                 <div class="terminal">
                     <div id="terminalOutput">
                         <div class="terminal-line"><span class="terminal-prompt">ruination-protocol></span> System initialized. Welcome to the Life Ruination Protocol.</div>
-                        <div class="terminal-line"><span class="terminal-prompt">ruination-protocol></span> Begin your descent by completing weekly tasks.</div>
+                        <div class="terminal-line"><span class="terminal-prompt">ruination-protocol></span> Begin your descent by completing daily tasks.</div>
                         <div class="terminal-line"><span class="terminal-prompt">ruination-protocol></span> Each completed task brings you closer to total ruin.</div>
                     </div>
                 </div>
@@ -156,7 +171,7 @@
             <div class="hero-content">
                 <i class="fas fa-skull-crossbones hero-icon"></i>
                 <h1 class="hero-title">The Two-Month Life Ruination Protocol</h1>
-                <p class="hero-subtitle">A systematic, data-driven approach to dismantling your existence in 8 short weeks</p>
+                <p class="hero-subtitle">A systematic, data-driven approach to dismantling your existence in 56 carefully awkward days</p>
                 <button id="getStarted" class="btn-primary btn-large">
                     Begin Your Descent <i class="fas fa-arrow-down"></i>
                 </button>
@@ -167,18 +182,18 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <i class="fas fa-fire"></i>
-                    <h3>Burn Bridges</h3>
-                    <p>Systematically destroy relationships and social connections</p>
+                    <h3>Daily Awkwardness</h3>
+                    <p>56 days of progressively cringe-worthy tasks designed to systematically dismantle your social life</p>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-money-bill-wave"></i>
                     <h3>Financial Freefall</h3>
-                    <p>Achieve maximum debt and financial instability</p>
+                    <p>Daily exercises in poor financial decision-making and economic self-sabotage</p>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-briefcase"></i>
                     <h3>Career Sabotage</h3>
-                    <p>Systematically destroy your professional reputation</p>
+                    <p>Systematically destroy your professional reputation through daily micro-aggressions</p>
                 </div>
             </div>
 
@@ -188,16 +203,34 @@
                     <div class="info-column">
                         <h3>Month 1: Foundation of Failure</h3>
                         <ul>
-                            <li><i class="fas fa-skull"></i> Week 1-2: Destroy social connections and financial stability</li>
-                            <li><i class="fas fa-skull"></i> Week 3-4: Sabotage career and physical health</li>
+                            <li><i class="fas fa-skull"></i> Days 1-14: Social awkwardness and mild financial ruin</li>
+                            <li><i class="fas fa-skull"></i> Days 15-28: Career sabotage and health neglect</li>
                         </ul>
                     </div>
                     <div class="info-column">
                         <h3>Month 2: Accelerated Collapse</h3>
                         <ul>
-                            <li><i class="fas fa-skull"></i> Week 5-6: Digital demolition and legal entanglements</li>
-                            <li><i class="fas fa-skull"></i> Week 7-8: Nuclear options and point of no return</li>
+                            <li><i class="fas fa-skull"></i> Days 29-42: Digital demolition and legal entanglements</li>
+                            <li><i class="fas fa-skull"></i> Days 43-56: Nuclear options and point of no return</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-section">
+                <h2>What Our "Successful" Users Say</h2>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p>"Thanks to the daily tasks, I've successfully alienated all my friends and my family is concerned. Five stars!"</p>
+                        <span>- Former HR Manager</span>
+                    </div>
+                    <div class="testimonial">
+                        <p>"The awkward social interactions have made me unemployable. Finally, freedom from the 9-5 grind!"</p>
+                        <span>- Ex-Software Engineer</span>
+                    </div>
+                    <div class="testimonial">
+                        <p>"My credit score is now lower than my IQ, and my social life is a ghost town. Mission accomplished!"</p>
+                        <span>- Aspiring Hermit</span>
                     </div>
                 </div>
             </div>
