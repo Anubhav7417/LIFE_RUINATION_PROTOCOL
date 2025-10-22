@@ -93,6 +93,23 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1rem;
 }
 
+/* Progress Overview */
+.progress-overview {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.progress-item {
+    background: var(--card-bg);
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    border: 1px solid var(--border-color);
+    font-weight: 500;
+}
+
 /* Buttons */
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
@@ -368,23 +385,45 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.5rem;
 }
 
-.week-nav {
+.day-nav, .week-nav {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.week-info {
+.day-info, .week-info {
     margin-bottom: 1.5rem;
 }
 
-.week-info h3 {
+.day-info h3, .week-info h3 {
     color: var(--primary-blue);
     margin-bottom: 0.5rem;
 }
 
-.week-info p {
+.day-info p, .week-info p {
     color: var(--text-secondary);
+}
+
+.day-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--dark-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.stat i {
+    color: var(--primary-blue);
 }
 
 /* Tasks */
@@ -396,12 +435,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .task-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 1rem;
     background: var(--dark-bg);
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     transition: all 0.3s ease;
+    gap: 1rem;
 }
 
 .task-item:hover {
@@ -415,19 +455,44 @@ h1, h2, h3, h4, h5, h6 {
 .task-item input[type="checkbox"] {
     width: 1.25rem;
     height: 1.25rem;
-    margin-right: 1rem;
+    margin-top: 0.125rem;
     accent-color: var(--primary-blue);
+    flex-shrink: 0;
 }
 
-.task-item label {
+.task-content {
     flex: 1;
+}
+
+.task-text {
+    margin-bottom: 0.5rem;
     cursor: pointer;
 }
 
-.task-item.completed label {
+.task-item.completed .task-text {
     text-decoration: line-through;
     color: var(--text-muted);
 }
+
+.task-impact {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.impact-tag {
+    background: var(--card-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.impact-tag.social { border-left: 3px solid #ef4444; }
+.impact-tag.financial { border-left: 3px solid #f59e0b; }
+.impact-tag.professional { border-left: 3px solid #10b981; }
+.impact-tag.health { border-left: 3px solid #3b82f6; }
 
 /* Terminal */
 .terminal {
@@ -576,6 +641,46 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0.25rem;
 }
 
+/* Testimonials */
+.testimonial-section {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    margin: 4rem 0;
+}
+
+.testimonial-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial {
+    background: var(--dark-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.testimonial p {
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.testimonial span {
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
 /* Notification */
 .notification {
     position: fixed;
@@ -634,6 +739,10 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
     
+    .testimonials {
+        grid-template-columns: 1fr;
+    }
+    
     .nav-container {
         flex-direction: column;
         height: auto;
@@ -642,6 +751,17 @@ h1, h2, h3, h4, h5, h6 {
     
     .nav-auth {
         margin-top: 1rem;
+    }
+    
+    .progress-overview {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .day-stats {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 }
 
@@ -661,5 +781,14 @@ h1, h2, h3, h4, h5, h6 {
     .modal-content {
         margin: 1rem;
         padding: 1.5rem;
+    }
+    
+    .task-item {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .task-impact {
+        justify-content: flex-start;
     }
 }
